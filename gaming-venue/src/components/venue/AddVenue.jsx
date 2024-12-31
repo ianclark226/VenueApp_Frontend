@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { addVenue } from '../utils/ApiFunctions'
 import VenueTypeSelector from '../common/VenueTypeSelector'
+import { Link } from 'react-router-dom'
 
 const AddVenue = () => {
   const [newVenue, setNewVenue] = useState({
@@ -106,6 +107,9 @@ const AddVenue = () => {
                )}
             </div>
             <div className='d-md-grid d-md-flex mt-2'>
+              <Link to={'/existing-venues'} className='btn btn-outline-info'>
+              Back
+              </Link>
               <button className='btn btn-outline-primary ml-5'>
                 Save Venue
               </button>

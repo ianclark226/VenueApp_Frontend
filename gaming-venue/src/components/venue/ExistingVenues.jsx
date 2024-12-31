@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { getAllVenues } from '../utils/ApiFunctions'
+import { deleteVenue, getAllVenues } from '../utils/ApiFunctions'
 import VenueFilter from '../common/VenueFilter'
 import VenuePaginator from '../common/VenuePaginator'
-import { Col } from 'bootstrap'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row'
+import { FaEye, FaTrashAlt, FaEdit, FaPlus } from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 
 const ExistingVenues = () => {
     const [venues, setVenues] = useState([])
@@ -56,6 +59,25 @@ const ExistingVenues = () => {
         setCurrentPage(pageNumber)
     }
 
+    const handleDeletes = async(venueId) => {
+        try {
+            const result = await deleteVenue(venueId)
+            if(result === '') {
+                setSuccessMsg(`Venue No: ${venueId} was deleted`)
+                fetchVenues()
+            } else {
+                console.error(`Error deleting room : ${result.message}`)
+            }
+
+        } catch(err) {
+            setErrorMsg(err.message)
+        }
+        setTimeout(() => {
+            setSuccessMsg('')
+            setErrorMsg('')
+        }, 3000)
+    }
+
   return (
     <>
         {isLoading ? (
@@ -63,14 +85,23 @@ const ExistingVenues = () => {
         ) : (
             <>
             <section className='mt-5 mb-5 container'>
-                <div className='d-flex justify-content-center mb-3 mt-5'>
+                <div className='d-flex justify-content-between mb-3 mt-5'>
                     <h2>Existing Venues</h2>
-
+                    
                 </div>
-                <Col md={6} className='mb-3 mb-md-0'>
+                <Row>
+                <Col md={6} className='mb-2 md-mb-0'>
                 <VenueFilter data={venues} setFilteredData={setFilteredVenues} />
 
                 </Col>
+                
+
+                <Col md={6} className='d-flex justify-content-end'>
+                <Link to={'/add-venue'}>
+                    <FaPlus /> Add Venue
+                    </Link>
+                </Col>
+                </Row>
 
                 <table className="table table-bordered table-hover">
                     <thead>
@@ -84,11 +115,20 @@ const ExistingVenues = () => {
                     <tbody>
                         {currentVenues.map((venue) => (
                             <tr key={venue.id} className='text-center'>
+                                <td>{venue.id}</td>
                                 <td>{venue.venueType}</td>
                                 <td>{venue.venuePrice}</td>
-                                <td>
-                                    <button>View / Edit</button>
-                                    <button>Delete</button>
+                                <td className='gap-2'>
+                                    <Link to={`/edit-venue/${venue.id}`}>
+                                    <span className='btn btn-info btn-sm'><FaEye/></span>
+                                    <span className='btn btn-warning btn-sm'><FaEdit/></span>
+                                    </Link>
+
+                                    <button
+                                    className='btn btn-danger btn-sm'
+                                    onClick={() => handleDeletes(venue.id)}>
+                                    <FaTrashAlt />
+                                    </button>
                                 </td>
                             </tr>
                         ))}

@@ -41,3 +41,40 @@ export async function getAllVenues() {
         throw new Error("Can't find venues")
     }
 }
+
+// This is to delete a venue from db
+export async function deleteVenue(venueId) {
+    try {
+
+        const result = await api.delete(`/venues/delete/venue/${venueId}`)
+        return result.data
+
+    } catch(err) {
+        throw new Error(`Unable to delete venue ${err.message}`)
+    }
+}
+
+// This updates a venue by id
+export async function updateVenue(venueId, venueData) {
+    const formData = new FormData()
+    formData.append("venueType", venueData.venueType)
+    formData.append("venuePrice", venueData.venuePrice)
+    formData.append("photo", venueData.photo)
+
+    const res = await api.put(`/venues/update/${venueId}`, formData)
+
+    return res
+}
+
+// This gets a venue by id
+export async function getVenueById(venueId) {
+    try {
+
+        const result = await api.get(`/venues/venue/${venueId}`)
+
+        return result.data
+
+    } catch(err) {
+        throw new Error(`Error fetching venue ${err.message}`)
+    }
+}
