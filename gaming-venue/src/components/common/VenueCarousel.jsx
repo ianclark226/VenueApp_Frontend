@@ -23,8 +23,8 @@ const VenueCarousel = () => {
         return <div className='mt-5'>Loading Venues.....</div>
     }
 
-    if(errMsg) {
-        return <div className='text-danger mt-5 mb-5'>Error: ${errMsg}</div>
+    if(errorMsg) {
+        return <div className='text-danger mt-5 mb-5'>Error: ${errorMsg}</div>
     }
  
   return (

@@ -10,6 +10,8 @@ import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
 import VenueListing from './components/venue/VenueListing'
 import Admin from './components/admin/Admin'
+import Checkout from './components/bookings/Checkout'
+import BookingSuccess from './components/bookings/BookingSuccess'
 
 function App() {
 
@@ -23,8 +25,10 @@ function App() {
           <Route path='/edit-venue/:venueId' element={<EditVenue/>}/>
           <Route path='/existing-venues' element={<ExistingVenues/>}/>
           <Route path='/add-venue' element={<AddVenue/>}/>
+          <Route path='/book-venue/:venueId' element={<Checkout/>}/>
           <Route path='/browse-all-venues' element={<VenueListing/>}/>
           <Route path='/admin' element={<Admin/>}/>
+          <Route path='/booking-success' element={<BookingSuccess/>}/>
         </Routes>
       </Router>
       <Footer/>

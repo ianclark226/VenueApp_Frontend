@@ -78,3 +78,59 @@ export async function getVenueById(venueId) {
         throw new Error(`Error fetching venue ${err.message}`)
     }
 }
+
+// This will save a new booking to the db
+export async function bookedVenue(venueId, booking) {
+    try {
+
+        const res = await api.post(`/bookings/venue/${venueId}/booking`, booking)
+        return res.data
+
+    } catch(err) {
+        if(err.response && err.response.data) {
+            throw new Error(err.response.data)
+        } else {
+            throw new Error(`Error booking venue : ${err.message}`)
+        }
+    }
+}
+
+// This will get all the bookings in the db
+export async function getAllBookings() {
+    try {
+
+        const result = await api.get(`/bookings/all-bookings`)
+        return result.data
+
+    } catch(err) {
+        throw new Error(`Error fetching bookings : ${err.message}`)
+    }
+}
+
+// This will get the booking by the confirmation code 
+export async function getBookingByConfirmationCode(confirmationCode) {
+    try {
+
+        const result = await api.get(`/confirmation/${confirmationCode}`)
+        return result.data
+
+    } catch(err) {
+        if(err.response && err.response.data) {
+            throw new Error(err.response.data)
+        } else {
+            throw new Error(`Error finding booking : ${err.message}`)
+        }
+    }
+}
+
+// This will cancel a booking
+export async function cancelBooking(bookingId) {
+    try {
+
+        const result = await api.delete(`/bookings/booking/${bookingId}/delete`)
+        return result.data
+
+    } catch(err) {
+        throw new Error(`Error Cancelling Booking : ${err.message}`)
+    }
+}

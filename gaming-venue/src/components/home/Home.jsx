@@ -2,6 +2,7 @@ import React from 'react'
 import MainHeader from '../layout/MainHeader'
 import OnlineServices from '../common/OnlineServices'
 import Parallax from '../common/Parallax'
+import VenueCarousel from '../common/VenueCarousel'
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <MainHeader/>
 
       <section className="container">
+        <VenueCarousel/>
         <Parallax/>
         <OnlineServices/>
         
