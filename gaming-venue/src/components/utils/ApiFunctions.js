@@ -86,11 +86,11 @@ export async function bookedVenue(venueId, booking) {
         const res = await api.post(`/bookings/venue/${venueId}/booking`, booking)
         return res.data
 
-    } catch(err) {
-        if(err.response && err.response.data) {
-            throw new Error(err.response.data)
+    } catch(error) {
+        if(error.response && erorr.response.data) {
+            throw new Error(error.response.data)
         } else {
-            throw new Error(`Error booking venue : ${err.message}`)
+            throw new Error(`Error booking venue : ${error.message}`)
         }
     }
 }
@@ -111,7 +111,7 @@ export async function getAllBookings() {
 export async function getBookingByConfirmationCode(confirmationCode) {
     try {
 
-        const result = await api.get(`/confirmation/${confirmationCode}`)
+        const result = await api.get(`bookings/confirmation/${confirmationCode}`)
         return result.data
 
     } catch(err) {

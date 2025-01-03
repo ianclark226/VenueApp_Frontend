@@ -22,7 +22,7 @@ const BookingSummery = ({booking, payment, isFormValid, onConfirm}) => {
 
     useEffect(() => {
         if(isBookingConfirmed) {
-            navigate('/booking-success')
+            navigate('/booking-success', { state: { message: 'Booking successful!' } });
         }
 
     }, [isBookingConfirmed, navigate])
@@ -30,11 +30,11 @@ const BookingSummery = ({booking, payment, isFormValid, onConfirm}) => {
   return (
     <div className='card card-body mt-5'>
         <h4>Reservation Summary</h4>
-        <p>Full Name: <strong>{booking.organizerName}</strong></p>
-        <p>Email: <strong>{booking.organizerEmail}</strong></p>
-        <p>Start Date: <strong>{moment(booking.startDate).format('MMM Do YYYY')}</strong></p>
-        <p>End Date: <strong>{moment(booking.endDate).format('MMM Do YYYY')}</strong></p>
-        <p>Number of Days: <strong>{numOfDays}</strong></p>
+        <p>Full Name: <strong>{console.log(booking.organizerFullName)}</strong></p>
+        <p>Email: <strong>{console.log(booking.organizerEmail)}</strong></p>
+        <p>Start Date: <strong>{moment(console.log(booking.startDate)).format('MMM Do YYYY')}</strong></p>
+        <p>End Date: <strong>{moment(console.log(booking.endDate)).format('MMM Do YYYY')}</strong></p>
+        <p>Number of Days: <strong>{console.log(numOfDays)}</strong></p>
         <div>
             <h5>Number of Organizers and Events</h5>
             <strong>

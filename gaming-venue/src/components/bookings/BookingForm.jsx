@@ -42,8 +42,8 @@ const BookingForm = () => {
             const res = await getVenueById(venueId)
             setVenuePrice(res.venuePrice)
 
-        } catch(err) {
-            throw new Error(err)
+        } catch(error) {
+            throw new Error(error)
         }
     }
 
@@ -97,11 +97,11 @@ const BookingForm = () => {
         try {
             const confirmationCode = await bookedVenue(venueId, booking)
             setIsSubmitted(true)
-            navigate('/', { state:  {message: confirmationCode }})
+            navigate('/booking-success', { state:  {message: confirmationCode }})
 
-        } catch(err) {
-            setErrorMsg(err.message)
-            navigate('/', { state: { err: errorMsg }})
+        } catch(error) {
+            setErrorMsg(error.message)
+            navigate('/', { state: { error: errorMsg }})
         }
     }
 
@@ -246,6 +246,7 @@ const BookingForm = () => {
                 <div className="col-md-6">
                     {isSubmitted  && (
                         <BookingSummery booking={booking} isFormValid={isValidated} payment={calculatePayment()} onConfirm={handleBooking}/>
+                        
                     )}
                 </div>
             </div>
