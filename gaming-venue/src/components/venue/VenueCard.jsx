@@ -28,7 +28,7 @@ const VenueCard = ({venue}) => {
                 <CardText>Some Venue Information goes here for people to read through</CardText>
             </div>
             <div className="flex-shrink-0 mt-3">
-                <Link to={`/book-venue/${venue.id}`} className='btn btn-hotel btn-sm'>Book Now</Link>
+                <Link to={`//${venue.id}`} className='btn btn-hotel btn-sm'>Book Now</Link>
             </div>
         </CardBody>
       </Card>

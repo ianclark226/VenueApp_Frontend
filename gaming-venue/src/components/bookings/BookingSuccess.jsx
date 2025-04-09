@@ -1,11 +1,12 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Header from '../common/Header'
 
 const BookingSuccess = () => {
     const location = useLocation();
     const message = location.state?.message || 'No success message available'
     const error = location.state?.error || 'No error message available'
+    
     
     console.log('Location object:', location);
     console.log('Message:', message);

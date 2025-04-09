@@ -109,18 +109,16 @@ export async function getAllBookings() {
 
 // This will get the booking by the confirmation code 
 export async function getBookingByConfirmationCode(confirmationCode) {
-    try {
-
-        const result = await api.get(`bookings/confirmation/${confirmationCode}`)
-        return result.data
-
-    } catch(err) {
-        if(err.response && err.response.data) {
-            throw new Error(err.response.data)
-        } else {
-            throw new Error(`Error finding booking : ${err.message}`)
-        }
-    }
+	try {
+		const result = await api.get(`/bookings/confirmation/${confirmationCode}`)
+		return result.data
+	} catch (error) {
+		if (error.response && error.response.data) {
+			throw new Error(error.response.data)
+		} else {
+			throw new Error(`Error find booking : ${error.message}`)
+		}
+	}
 }
 
 // This will cancel a booking
