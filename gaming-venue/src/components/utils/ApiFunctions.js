@@ -114,7 +114,10 @@ export async function getBookingByConfirmationCode(confirmationCode) {
 		return result.data
 	} catch (error) {
 		if (error.response && error.response.data) {
-			throw new Error(error.response.data)
+			const backendError = typeof error.response.data === "string"
+				? error.response.data
+				: error.response.data.error || JSON.stringify(error.response.data)
+			throw new Error(backendError)
 		} else {
 			throw new Error(`Error find booking : ${error.message}`)
 		}

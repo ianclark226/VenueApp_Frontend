@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getVenueById } from '../utils/ApiFunctions'
+import { bookedVenue, getVenueById } from '../utils/ApiFunctions'
 import { useNavigate, useParams } from 'react-router-dom'
 import moment from 'moment'
 import { Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap'
@@ -54,14 +54,9 @@ const BookingForm = () => {
     const calculatePayment = () => {
         const startDate = moment(booking.startDate)
         const endDate = moment(booking.endDate)
-        const diffInDays = endDate.diff(startDate)
-
-        if (diffInDays <= 0) {
-            return 0 // Ensure payment is zero for invalid date ranges
-        }
-
-        const price = venuePrice || 0
-        return diffInDays * price
+        const diffInDays = endDate.diff(startDate, "days")
+        const paymentsPerDay = venuePrice ? venuePrice : 0
+        return diffInDays * paymentsPerDay
     }
 
     const isOrganizerCountValid = () => {
@@ -97,12 +92,11 @@ const BookingForm = () => {
         try {
             const confirmationCode = await bookedVenue(venueId, booking)
             setIsSubmitted(true)
-            navigate('/booking-success', { state:  {message: confirmationCode }})
-
-        } catch(error) {
+            navigate("/booking-success", { state: { message: confirmationCode } })
+        } catch (error) {
             const errorMessage = error.message
-            setErrorMsg(errorMessage.message)
-            navigate('/booking-success', { state: { error: errorMessage }})
+            console.log(errorMessage)
+            navigate("/booking-fail", { state: { error: errorMessage } })
         }
     }
 

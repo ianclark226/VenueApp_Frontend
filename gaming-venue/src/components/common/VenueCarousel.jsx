@@ -55,8 +55,8 @@ const VenueCarousel = () => {
                                             <CardTitle className='hotel-color'>${venue.venueType}</CardTitle>
                                             <CardTitle className='hotel-color'>${venue.venuePrice}/day</CardTitle>
 
-                                            <div className="flex-shrink-0">
-                                                <Link className='btn btn-sm btn-hotel' to={`/book-venue/${venue.id}`}>
+                                            <div className="flex-shrink-0" style={{backgroundColor: 'purple', borderRadius: '10px', width: '85px'}}>
+                                                <Link className='btn btn-sm btn-hotel' style={{ color: '#fff'}} to={`/book-venue/${venue.id}`}>
                                                 Book Now
                                                 </Link>
                                             </div>
