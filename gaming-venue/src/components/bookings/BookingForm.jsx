@@ -19,30 +19,30 @@ const BookingForm = () => {
         numOfEvents: ''
     })
 
-    const[venueInfo, setVenueInfo] = useState({
+    const [venueInfo, setVenueInfo] = useState({
         photo: '',
         venueType: '',
         venuePrice: ''
     })
 
-    const {venueId} = useParams()
+    const { venueId } = useParams()
     const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
 
-        setBooking({...booking, [name]: value})
+        setBooking({ ...booking, [name]: value })
         setErrorMsg('')
     }
 
-    const getVenuePriceById = async(venueId) => {
+    const getVenuePriceById = async (venueId) => {
         try {
 
             const res = await getVenueById(venueId)
             setVenuePrice(res.venuePrice)
 
-        } catch(error) {
+        } catch (error) {
             throw new Error(error)
         }
     }
@@ -67,7 +67,7 @@ const BookingForm = () => {
     }
 
     const isEndDateValid = () => {
-        if(!moment(booking.endDate).isSameOrAfter(moment(booking.startDate))) {
+        if (!moment(booking.endDate).isSameOrAfter(moment(booking.startDate))) {
             setErrorMsg('End date must come before start date')
             return false
         } else {
@@ -79,16 +79,16 @@ const BookingForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.currentTarget
-        if(form.checkValidity() === false || !isOrganizerCountValid() || !isEndDateValid()) {
+        if (form.checkValidity() === false || !isOrganizerCountValid() || !isEndDateValid()) {
             e.stopPropagation()
         } else {
             setIsSubmitted(true)
-            
+
         }
         setIsValidated(true)
     }
 
-    const handleBooking = async() => {
+    const handleBooking = async () => {
         try {
             const confirmationCode = await bookedVenue(venueId, booking)
             setIsSubmitted(true)
@@ -100,154 +100,154 @@ const BookingForm = () => {
         }
     }
 
-  return (
-    <>
-      <div className="container mb-5">
-            <div className="row">
-                <div className="col-md-6">
-                    <div className="card card-body mt-5">
-                        <h4 className="card card-title">Reserve Venue</h4>
-                        <Form noValidate validated={isValidated} onSubmit={handleSubmit}>
-                            <FormGroup>
-                                <FormLabel htmlFor='organizerFullName'>
-                                    Full Name:
-                                </FormLabel>
-                           
-                            <FormControl 
-                            required
-                            type='text'
-                            id='organizerFullName'
-                            name='organizerFullName'
-                            value={booking.organizerFullName}
-                            placeholder='Enter Full Name'
-                            onChange={handleInputChange}
-                            />
-                            <FormControl.Feedback type='invalid'>Please Enter your Full Name</FormControl.Feedback>
-                            </FormGroup>
-                            <FormGroup>
-                                <FormLabel htmlFor='organizerEmail'>
-                                    Email:
-                                </FormLabel>
-                           
-                            <FormControl 
-                            required
-                            type='email'
-                            id='organizerEmail'
-                            name='organizerEmail'
-                            value={booking.organizerEmail}
-                            placeholder='Enter Full Email'
-                            onChange={handleInputChange}
-                            />
-                            <FormControl.Feedback type='invalid'>Please Enter your Email</FormControl.Feedback>
-                            </FormGroup>
-                            <fieldset style={{border: '2px'}}>
-                                <legend>Lodging Period</legend>
-                                <div className='row'>
+    return (
+        <>
+            <div className="container mb-5">
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="card card-body mt-5">
+                            <h4 className="card card-title">Reserve Venue</h4>
+                            <Form noValidate validated={isValidated} onSubmit={handleSubmit}>
+                                <FormGroup>
+                                    <FormLabel htmlFor='organizerFullName'>
+                                        Full Name:
+                                    </FormLabel>
 
-                                      <div className='col-6'>
-                                          
-                                              <FormLabel htmlFor='startDate'>
-                                                  Start Date:
-                                              </FormLabel>
+                                    <FormControl
+                                        required
+                                        type='text'
+                                        id='organizerFullName'
+                                        name='organizerFullName'
+                                        value={booking.organizerFullName}
+                                        placeholder='Enter Full Name'
+                                        onChange={handleInputChange}
+                                    />
+                                    <FormControl.Feedback type='invalid'>Please Enter your Full Name</FormControl.Feedback>
+                                </FormGroup>
+                                <FormGroup>
+                                    <FormLabel htmlFor='organizerEmail'>
+                                        Email:
+                                    </FormLabel>
 
-                                              <FormControl
-                                                  required
-                                                  type='date'
-                                                  id='startDate'
-                                                  name='startDate'
-                                                  value={booking.startDate}
-                                                  placeholder='Start Date'
-                                                  onChange={handleInputChange}
-                                              />
-                                              <FormControl.Feedback type='invalid'>Please select Start Date</FormControl.Feedback>
-                                          
-                                      </div>
+                                    <FormControl
+                                        required
+                                        type='email'
+                                        id='organizerEmail'
+                                        name='organizerEmail'
+                                        value={booking.organizerEmail}
+                                        placeholder='Enter Full Email'
+                                        onChange={handleInputChange}
+                                    />
+                                    <FormControl.Feedback type='invalid'>Please Enter your Email</FormControl.Feedback>
+                                </FormGroup>
+                                <fieldset style={{ border: '2px' }}>
+                                    <legend>Lodging Period</legend>
+                                    <div className='row'>
 
-                                      <div className='col-6'>
-                                          
-                                              <FormLabel htmlFor='endDate'>
-                                                  End Date:
-                                              </FormLabel>
+                                        <div className='col-6'>
 
-                                              <FormControl
-                                                  required
-                                                  type='date'
-                                                  id='endDate'
-                                                  name='endDate'
-                                                  value={booking.endDate}
-                                                  placeholder='End Date'
-                                                  onChange={handleInputChange}
-                                              />
-                                              <FormControl.Feedback type='invalid'>Please select End Date</FormControl.Feedback>
-                                          
-                                      </div>
+                                            <FormLabel htmlFor='startDate'>
+                                                Start Date:
+                                            </FormLabel>
+
+                                            <FormControl
+                                                required
+                                                type='date'
+                                                id='startDate'
+                                                name='startDate'
+                                                value={booking.startDate}
+                                                placeholder='Start Date'
+                                                onChange={handleInputChange}
+                                            />
+                                            <FormControl.Feedback type='invalid'>Please select Start Date</FormControl.Feedback>
+
+                                        </div>
+
+                                        <div className='col-6'>
+
+                                            <FormLabel htmlFor='endDate'>
+                                                End Date:
+                                            </FormLabel>
+
+                                            <FormControl
+                                                required
+                                                type='date'
+                                                id='endDate'
+                                                name='endDate'
+                                                value={booking.endDate}
+                                                placeholder='End Date'
+                                                onChange={handleInputChange}
+                                            />
+                                            <FormControl.Feedback type='invalid'>Please select End Date</FormControl.Feedback>
+
+                                        </div>
                                         {errorMsg && <p className='error-message text-danger'>{errorMsg}</p>}
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>
+                                        Number of Organizers
+                                    </legend>
+                                    <div className='row'>
+                                        <div className='col-6'>
+
+                                            <FormLabel htmlFor='numOfOrganizers'>
+                                                Number of Events:
+                                            </FormLabel>
+
+                                            <FormControl
+                                                required
+                                                type='number'
+                                                id='numOfOrganizers'
+                                                name='numOfOrganizers'
+                                                value={booking.numOfOrganizers}
+                                                placeholder='0'
+                                                min={1}
+                                                onChange={handleInputChange}
+                                            />
+                                            <FormControl.Feedback type='invalid'>Please select at least 1 Organizer</FormControl.Feedback>
+
+                                        </div>
+
+                                        <div className='col-6'>
+
+                                            <FormLabel htmlFor='numOfEvents'>
+                                                Number of Events:
+                                            </FormLabel>
+
+                                            <FormControl
+                                                required
+                                                type='number'
+                                                id='numOfEvents'
+                                                name='numOfEvents'
+                                                value={booking.numOfEvents}
+                                                placeholder='0'
+                                                min={1}
+                                                onChange={handleInputChange}
+                                            />
+                                            <FormControl.Feedback type='invalid'>Please select at least 1 Organizer</FormControl.Feedback>
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div className="form-group mt-2 mb-2">
+                                    <button className="btn" style={{backgroundColor: 'purple', borderRadius: '10px', color: '#fff' }} type='submit'>Continue</button>
                                 </div>
-                            </fieldset>
-
-                            <fieldset>
-                                <legend>
-                                    Number of Organizers
-                                </legend>
-                                <div className='row'>
-                                <div className='col-6'>
-                                          
-                                              <FormLabel htmlFor='numOfOrganizers'>
-                                                  Number of Events:
-                                              </FormLabel>
-
-                                              <FormControl
-                                                  required
-                                                  type='number'
-                                                  id='numOfOrganizers'
-                                                  name='numOfOrganizers'
-                                                  value={booking.numOfOrganizers}
-                                                  placeholder='0'
-                                                  min={1}
-                                                  onChange={handleInputChange}
-                                              />
-                                              <FormControl.Feedback type='invalid'>Please select at least 1 Organizer</FormControl.Feedback>
-                                          
-                                      </div>
-
-                                      <div className='col-6'>
-                                          
-                                              <FormLabel htmlFor='numOfEvents'>
-                                                  Number of Events:
-                                              </FormLabel>
-
-                                              <FormControl
-                                                  required
-                                                  type='number'
-                                                  id='numOfEvents'
-                                                  name='numOfEvents'
-                                                  value={booking.numOfEvents}
-                                                  placeholder='0'
-                                                  min={1}
-                                                  onChange={handleInputChange}
-                                              />
-                                              <FormControl.Feedback type='invalid'>Please select at least 1 Organizer</FormControl.Feedback>
-                                          
-                                      </div>
-                                      </div>
-                            </fieldset>
-                            <div className="form-group mt-2 mb-2">
-                                <button className="btn btn-hotel" type='submit'>Continue</button>
-                            </div>
                             </Form>
+                        </div>
+                    </div>
+
+                    <div className="col-md-4">
+                        {isSubmitted && (
+                            <BookingSummery booking={booking} isFormValid={isValidated} payment={calculatePayment()} onConfirm={handleBooking} />
+
+                        )}
                     </div>
                 </div>
-                
-                <div className="col-md-6">
-                    {isSubmitted  && (
-                        <BookingSummery booking={booking} isFormValid={isValidated} payment={calculatePayment()} onConfirm={handleBooking}/>
-                        
-                    )}
-                </div>
             </div>
-      </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default BookingForm

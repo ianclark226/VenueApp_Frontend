@@ -8,7 +8,7 @@ const VenueCard = ({venue}) => {
       <Card>
         <CardBody className='d-flex flex-wrap align-items-center'>
             <div className="flex-shrink-0 mr-3 mb-3 mb-md-0">
-            <Link to={`/book-venue/${venue.id}`} className='btn btn-hotel btn-sm'>
+            <Link to={`/book-venue/${venue.id}`}>
                 <CardImg
                 variant='top'
                 src={`data:image/png;base64, ${venue.photo}`}
@@ -28,7 +28,7 @@ const VenueCard = ({venue}) => {
                 <CardText>Some Venue Information goes here for people to read through</CardText>
             </div>
             <div className="flex-shrink-0 mt-3" style={{backgroundColor: 'purple', borderRadius: '10px'}}>
-                <Link to={`//${venue.id}`} className='btn btn-hotel btn-sm' style={{ color: '#fff'}}>Book Now</Link>
+                <Link to={`/book-venue/${venue.id}`} className='btn btn-hotel btn-sm' style={{ color: '#fff'}}>Book Now</Link>
             </div>
         </CardBody>
       </Card>
