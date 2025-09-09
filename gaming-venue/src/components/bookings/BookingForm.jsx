@@ -15,8 +15,8 @@ const BookingForm = () => {
         organizerEmail: '',
         startDate: '',
         endDate: '',
-        numOfOrganizers: '',
-        numOfEvents: ''
+        numOfAdults: '',
+        numOfChildren: ''
     })
 
     const [venueInfo, setVenueInfo] = useState({
@@ -59,11 +59,11 @@ const BookingForm = () => {
         return diffInDays * paymentsPerDay
     }
 
-    const isOrganizerCountValid = () => {
-        const organizerCount = parseInt(booking.numOfOrganizers)
-        const eventCount = parseInt(booking.numOfEvents)
-        const totalCount = organizerCount + eventCount
-        return totalCount >= 1 && organizerCount >= 1 && eventCount >= 1
+    const isAdultCountValid = () => {
+        const adultCount = parseInt(booking.numOfAdults)
+        const childrenCount = parseInt(booking.numOfChildren)
+        const totalCount = adultCount + childrenCount
+        return totalCount >= 1 && adultCount >= 1 && childrenCount >= 1
     }
 
     const isEndDateValid = () => {
@@ -79,7 +79,7 @@ const BookingForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.currentTarget
-        if (form.checkValidity() === false || !isOrganizerCountValid() || !isEndDateValid()) {
+        if (form.checkValidity() === false || !isAdultCountValid() || !isEndDateValid()) {
             e.stopPropagation()
         } else {
             setIsSubmitted(true)
@@ -187,21 +187,21 @@ const BookingForm = () => {
 
                                 <fieldset>
                                     <legend>
-                                        Number of Organizers
+                                        Number of Adults
                                     </legend>
                                     <div className='row'>
                                         <div className='col-6'>
 
-                                            <FormLabel htmlFor='numOfOrganizers'>
-                                                Number of Events:
+                                            <FormLabel htmlFor='numOfAdults'>
+                                                Number of Adults:
                                             </FormLabel>
 
                                             <FormControl
                                                 required
                                                 type='number'
-                                                id='numOfOrganizers'
-                                                name='numOfOrganizers'
-                                                value={booking.numOfOrganizers}
+                                                id='numOfAdults'
+                                                name='numOfAdults'
+                                                value={booking.numOfAdults}
                                                 placeholder='0'
                                                 min={1}
                                                 onChange={handleInputChange}
@@ -212,21 +212,21 @@ const BookingForm = () => {
 
                                         <div className='col-6'>
 
-                                            <FormLabel htmlFor='numOfEvents'>
-                                                Number of Events:
+                                            <FormLabel htmlFor='numOfChildren'>
+                                                Number of Children:
                                             </FormLabel>
 
                                             <FormControl
                                                 required
                                                 type='number'
-                                                id='numOfEvents'
-                                                name='numOfEvents'
-                                                value={booking.numOfEvents}
+                                                id='numOfChildren'
+                                                name='numOfChildren'
+                                                value={booking.numOfChildren}
                                                 placeholder='0'
                                                 min={1}
                                                 onChange={handleInputChange}
                                             />
-                                            <FormControl.Feedback type='invalid'>Please select at least 1 Organizer</FormControl.Feedback>
+                                            <FormControl.Feedback type='invalid'>Please select at least 1 Adult</FormControl.Feedback>
 
                                         </div>
                                     </div>

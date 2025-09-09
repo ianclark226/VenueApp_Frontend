@@ -10,7 +10,7 @@ const FindBooking = () => {
 
   const clearBookingInfo = {
     bookingId: '',
-    venue: { id: '' },
+    venue: { id: '', venueType: '' },
     bookingConfirmationCode: '',
     venueNumber: '',
     startDate: '',
@@ -98,7 +98,7 @@ const FindBooking = () => {
           <h3>Booking Information</h3>
           <p>Booking Confirmation Code: {bookingInfo.bookingConfirmationCode}</p>
           <p>Booking ID: {bookingInfo.bookingId}</p>
-          <p>Venue Number: {bookingInfo.venue.id}</p>
+          <p>Venue Type: {bookingInfo.venue.venueType}</p>
           <p>Start Date: {bookingInfo.startDate}</p>
           <p>End Date: {bookingInfo.endDate}</p>
           <p>Organizer Full Name: {bookingInfo.organizerFullName}</p>

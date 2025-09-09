@@ -132,3 +132,13 @@ export async function cancelBooking(bookingId) {
         throw new Error(`Error cancelling booking :${error.message}`)
     }
 }
+
+export async function getAvailableVenues(startDate, endDate, venueType) {
+    try {
+        const result = await api.get(`/venues/available-venues?startDate=${startDate}&endDate=${endDate}&venueType=${venueType}`)
+        return result
+        
+    } catch (error) {
+        throw new Error(`Error getting available venues: ${error.message}`)
+    }
+}

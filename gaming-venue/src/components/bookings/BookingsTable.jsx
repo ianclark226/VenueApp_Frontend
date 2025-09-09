@@ -34,10 +34,10 @@ export default function BookingsTable({ bookingInfo, handleBookingCancellation }
           <tr>
             <th>S/N</th>
             <th>Booking ID</th>
-            <th>Room ID</th>
-            <th>Room Type</th>
-            <th>Check-In Date</th>
-            <th>Check-Out Date</th>
+            <th>Venue ID</th>
+            <th>Venue Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Organizer Name</th>
             <th>Organizer Email</th>
             <th>Adults</th>
