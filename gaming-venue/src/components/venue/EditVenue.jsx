@@ -51,9 +51,9 @@ const EditVenue = () => {
             const res = await updateVenue(venueId, venue)
             if(res.status === 200) {
               setSuccessMsg("Venue Updated Successfully")
-              const updatedRoomData = await getVenueById(venueId)
-              setVenue(updatedRoomData)
-              setImagePrev(updatedRoomData.photo)
+              const updatedVenueData = await getVenueById(venueId)
+              setVenue(updatedVenueData)
+              setImagePrev(updatedVenueData.photo)
               setErrMsg('')
             } else {
               setErrMsg('Error updating Venue')

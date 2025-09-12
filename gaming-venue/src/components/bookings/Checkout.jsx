@@ -56,7 +56,7 @@ const Checkout = () => {
                     </tr>
 
                     <tr>
-                      <th>Room Service:</th>
+                      <th>Venue Service:</th>
                       <td>
                         <ul className='list-unstyled'>
                           <li>

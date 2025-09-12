@@ -61,8 +61,8 @@ const FindBooking = () => {
       setError(error.message || 'Cancellation failed')
     }
     setTimeout(() => {
-        setSuccessMessage('')
-        setIsDeleted(false)
+      setSuccessMessage('')
+      setIsDeleted(false)
     }, 2000)
   }
 
@@ -99,8 +99,14 @@ const FindBooking = () => {
           <p>Booking Confirmation Code: {bookingInfo.bookingConfirmationCode}</p>
           <p>Booking ID: {bookingInfo.bookingId}</p>
           <p>Venue Type: {bookingInfo.venue.venueType}</p>
-          <p>Start Date: {bookingInfo.startDate}</p>
-          <p>End Date: {bookingInfo.endDate}</p>
+          <p>
+            Check-in Date:{" "}
+            {moment(bookingInfo.checkInDate).subtract(1, "month").format("MMM Do, YYYY")}
+          </p>
+          <p>
+            Check-out Date:{" "}
+            {moment(bookingInfo.checkOutDate).subtract(1, "month").format("MMM Do, YYYY")}
+          </p>
           <p>Organizer Full Name: {bookingInfo.organizerFullName}</p>
           <p>Organizer Email: {bookingInfo.organizerEmail}</p>
           <p>Number of Adults: {bookingInfo.numOfAdults}</p>
@@ -122,7 +128,7 @@ const FindBooking = () => {
 
       {isDeleted && (
         <div className="alert alert-success mt-3" role="alert">
-            {succussMessage}
+          {succussMessage}
         </div>
       )}
     </div>

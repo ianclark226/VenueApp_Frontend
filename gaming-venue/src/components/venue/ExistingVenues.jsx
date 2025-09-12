@@ -66,7 +66,7 @@ const ExistingVenues = () => {
                 setSuccessMsg(`Venue No: ${venueId} was deleted`)
                 fetchVenues()
             } else {
-                console.error(`Error deleting room : ${result.message}`)
+                console.error(`Error deleting venue : ${result.message}`)
             }
 
         } catch(err) {
