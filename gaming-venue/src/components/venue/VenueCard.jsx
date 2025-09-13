@@ -19,16 +19,16 @@ const VenueCard = ({venue}) => {
             
             
             <div className="flex-grow-1 ml-3 px-5">
-                <CardTitle className='hotel-color'>
+                <CardTitle className='venue-color'>
                     {venue.venueType}
                 </CardTitle>
-                <CardTitle className='hotel-color'>
+                <CardTitle className='venue-color'>
                     {venue.venuePrice}
                 </CardTitle>
                 <CardText>Some Venue Information goes here for people to read through</CardText>
             </div>
             <div className="flex-shrink-0 mt-3" style={{backgroundColor: 'purple', borderRadius: '10px'}}>
-                <Link to={`/book-venue/${venue.id}`} className='btn btn-hotel btn-sm' style={{ color: '#fff'}}>Book Now</Link>
+                <Link to={`/book-venue/${venue.id}`} className='btn btn-venue btn-sm' style={{ color: '#fff'}}>Book Now</Link>
             </div>
         </CardBody>
       </Card>

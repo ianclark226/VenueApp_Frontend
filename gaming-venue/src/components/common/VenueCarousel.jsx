@@ -29,7 +29,7 @@ const VenueCarousel = () => {
  
   return (
     <section className='bg-light mb-5 mt-5 shadow'>
-        <Link to={'/browse-all-venues'} className='hotel-color text-center'>
+        <Link to={'/browse-all-venues'} className='venue-color text-center'>
         Browse all venues
         </Link>
         <Container>
@@ -52,11 +52,11 @@ const VenueCarousel = () => {
                                             
                                         </Link>
                                         <CardBody>
-                                            <CardTitle className='hotel-color'>${venue.venueType}</CardTitle>
-                                            <CardTitle className='hotel-color'>${venue.venuePrice}/day</CardTitle>
+                                            <CardTitle className='venue-color'>${venue.venueType}</CardTitle>
+                                            <CardTitle className='venue-color'>${venue.venuePrice}/day</CardTitle>
 
                                             <div className="flex-shrink-0" style={{backgroundColor: 'purple', borderRadius: '10px', width: '85px'}}>
-                                                <Link className='btn btn-sm btn-hotel' style={{ color: '#fff'}} to={`/book-venue/${venue.id}`}>
+                                                <Link className='btn btn-sm btn-venue' style={{ color: '#fff'}} to={`/book-venue/${venue.id}`}>
                                                 Book Now
                                                 </Link>
                                             </div>

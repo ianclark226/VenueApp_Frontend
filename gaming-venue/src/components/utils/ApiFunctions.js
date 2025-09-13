@@ -19,7 +19,9 @@ export async function addVenue(photo, venueType, venuePrice) {
     formData.append("venueType", venueType)
     formData.append("venuePrice", venuePrice)
 
-    const res = await api.post("/venues/add/new-venue", formData)
+    const res = await api.post("/venues/add/new-venue", formData, {
+        headers: { ...getHeader(), "Content-Type": "multipart/form-data" }
+    })
 
     if(res.status === 201) {
         return true
@@ -54,7 +56,9 @@ export async function getAllVenues() {
 export async function deleteVenue(venueId) {
     try {
 
-        const result = await api.delete(`/venues/delete/venue/${venueId}`)
+        const result = await api.delete(`/venues/delete/venue/${venueId}`, {
+            headers: getHeader()
+        })
         return result.data
 
     } catch(err) {
@@ -69,7 +73,9 @@ export async function updateVenue(venueId, venueData) {
     formData.append("venuePrice", venueData.venuePrice)
     formData.append("photo", venueData.photo)
 
-    const res = await api.put(`/venues/update/${venueId}`, formData)
+    const res = await api.put(`/venues/update/${venueId}`, formData, {
+        headers: { ...getHeader(), "Content-Type": "multipart/form-data" }
+    })
 
     return res
 }

@@ -61,7 +61,7 @@ const VenueTypeSelector = ({ handleVenueInputChange, newVenue }) => {
 									value={newVenueType}
 									onChange={handleNewVenueTypeInputChange}
 								/>
-								<button className="btn btn-hotel" type="button" onClick={handleAddNewVenueType}>
+								<button className="btn btn-venue" type="button" onClick={handleAddNewVenueType}>
 									Add
 								</button>
 							</div>

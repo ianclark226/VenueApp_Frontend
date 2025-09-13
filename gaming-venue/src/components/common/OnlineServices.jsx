@@ -10,7 +10,7 @@ const OnlineServices = () => {
         <Header title={"Our Services"}/>
         <Row>
             <h4 className="text-center">
-                Services on our <span className='hotel-color'>Gaming - </span> Venue
+                Services on our <span className='venue-color'>Gaming - </span> Venue
                 <span className='gap-2'><FaClock/> -Reserve a Venue at anytime of day</span>
             </h4>
         </Row>
@@ -19,7 +19,7 @@ const OnlineServices = () => {
             <Col>
                 <Card>
                     <CardBody>
-                        <CardTitle className='hotel-color'>
+                        <CardTitle className='venue-color'>
                             <FaAccessibleIcon/> Easy Access
                             <CardText>Access from all devices</CardText>
                         </CardTitle>
@@ -29,7 +29,7 @@ const OnlineServices = () => {
             <Col>
                 <Card>
                     <CardBody>
-                        <CardTitle className='hotel-color'>
+                        <CardTitle className='venue-color'>
                             <FaUserFriends/> Make New Friends
                             <CardText>Find the right venue for people of your interests</CardText>
                         </CardTitle>
@@ -39,7 +39,7 @@ const OnlineServices = () => {
             <Col>
                 <Card>
                     <CardBody>
-                        <CardTitle className='hotel-color'>
+                        <CardTitle className='venue-color'>
                             <FaLocationArrow/> Local Venues
                             <CardText>Find a Venues that fits your traveling</CardText>
                         </CardTitle>
@@ -49,7 +49,7 @@ const OnlineServices = () => {
             <Col>
                 <Card>
                     <CardBody>
-                        <CardTitle className='hotel-color'>
+                        <CardTitle className='venue-color'>
                             <FaChild/> Kid Friendly
                             <CardText>Appropiate for all ages</CardText>
                         </CardTitle>
@@ -59,7 +59,7 @@ const OnlineServices = () => {
             <Col>
                 <Card>
                     <CardBody>
-                        <CardTitle className='hotel-color'>
+                        <CardTitle className='venue-color'>
                             <FaMoneyBill/> Low Prices
                             <CardText>Find Afforable Venues</CardText>
                         </CardTitle>
@@ -69,7 +69,7 @@ const OnlineServices = () => {
             <Col>
                 <Card>
                     <CardBody>
-                        <CardTitle className='hotel-color'>
+                        <CardTitle className='venue-color'>
                             <FaProcedures/> Rules to Follow
                             <CardText>No illegal events. Everything is safe and family friendly</CardText>
                         </CardTitle>

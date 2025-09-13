@@ -23,7 +23,7 @@ body {
   left: 0;
   right: 0;
   content: '';
-  background-color:rgb(169, 77, 123) ;
+  background-color:purple ;
   width: 0;
   margin: 0 auto;
   height: 4px;
@@ -52,12 +52,12 @@ body {
  }
  }
 
-  /* Hotel custom color */
- .btn-hotel{
-  background-color: rgb(169, 77, 123);
+  /* Venue custom color */
+ .btn-venue{
+  background-color: purple;
   color: #fff;
   }
-  .btn-hotel:hover{
+  .btn-venue:hover{
   background-color: rgb(137, 127, 132);
   color: #fff;
   transition: 0.7s;
@@ -66,8 +66,8 @@ body {
 
   }
 
-  .hotel-color{
-    color: rgb(169, 77, 123);
+  .venue-color{
+    color: purple;
   }
   .room-price{
     color:darkgoldenrod;
@@ -82,7 +82,7 @@ body {
 
 
 .parallax {
-  background-image: url("./assets/images/parrall.jpg");
+  background-image: url("./assets/images/gamingvenue.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -94,7 +94,7 @@ body {
   position: relative;
   height: 150px;
   background-size: cover;
-  background-image: url("./assets/images/services4.jpg");
+  background-image: url("./assets/images/cardvenue.webp");
   background-position: center center;
 }
 .header-title {
@@ -189,7 +189,7 @@ body {
 
 /* The header banner */
 .header-banner {
-  background-image:  url("./assets/images/services-1.jpg");
+  background-image:  url("./assets/images/conventioncenter.jpg");
    background-size: cover;
   background-position: center;
    position: relative;
