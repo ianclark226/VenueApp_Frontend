@@ -28,7 +28,8 @@ const BookingSummery = ({booking, payment, isFormValid, onConfirm}) => {
     }, [isBookingConfirmed, navigate])
 
   return (
-    <div className='card card-body mt-6'>
+    <div className="row justify-content-center" style={{ width: '600px' }}>
+  <div className='card card-body mt-5'>
         <h4>Reservation Summary</h4>
         <p>Full Name: <strong>{booking.organizerFullName}</strong></p>
         <p>Email: <strong>{booking.organizerEmail}</strong></p>
@@ -36,7 +37,7 @@ const BookingSummery = ({booking, payment, isFormValid, onConfirm}) => {
         <p>End Date: <strong>{moment(booking.endDate).format('MMM Do YYYY')}</strong></p>
         <p>Number of Days: <strong>{numOfDays}</strong></p>
         <div>
-            <h5>Number of Organizers and Events</h5>
+            <h5>Number of Adults and Children</h5>
             <strong>
                 Organizer{booking.numOfAdults > 1 ? 's' : ''} : {booking.numOfAdults}
             </strong>
@@ -73,6 +74,7 @@ const BookingSummery = ({booking, payment, isFormValid, onConfirm}) => {
         ) : (
             <p className='text-danger'>End date must be after Start</p>
         )}
+    </div>
     </div>
   )
 }

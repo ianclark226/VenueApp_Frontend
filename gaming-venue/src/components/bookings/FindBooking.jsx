@@ -102,11 +102,11 @@ const FindBooking = () => {
           <p>Venue Type: {bookingInfo.venue.venueType}</p>
           <p>
             Check-in Date:{" "}
-            {moment(bookingInfo.checkInDate).subtract(1, "month").format("MMM Do, YYYY")}
+            {moment(bookingInfo.startDate).subtract(1, "month").format("MMM Do, YYYY")}
           </p>
           <p>
             Check-out Date:{" "}
-            {moment(bookingInfo.checkOutDate).subtract(1, "month").format("MMM Do, YYYY")}
+            {moment(bookingInfo.endDate).subtract(1, "month").format("MMM Do, YYYY")}
           </p>
           <p>Organizer Full Name: {bookingInfo.organizerFullName}</p>
           <p>Organizer Email: {bookingInfo.organizerEmail}</p>
